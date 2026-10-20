@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff0f2">
+<meta name="description" content="Món quà 20/10 từ Bộ phận Innovation P dành tặng Ms Thương, Ms Duyên, Ms Quỳnh và Ms Huyền.">
+<title>Món quà 20/10 · Innovation P</title>
+<style>
+:root{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#57243a;background:#fff8f6}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 10% 0%,#ffdce9 0,transparent 43%),radial-gradient(ellipse at 95% 92%,#fbe6b5 0,transparent 34%),#fff9f6}
+main{max-width:940px;margin:auto;padding:35px 18px 65px;text-align:center}
+.eyebrow{font-size:.8rem;letter-spacing:.24em;color:#a45a70;text-transform:uppercase;font-weight:800}
+.hero h1{font-family:Georgia,serif;font-weight:700;font-size:clamp(2.6rem,8vw,4.6rem);margin:14px 0 8px;color:#b12252;line-height:1.08}
+.hero p{font-size:1.08rem;line-height:1.75;max-width:700px;margin:16px auto}
+.instructions{display:inline-block;background:#ffe8ef;border:1px solid #efc6d4;padding:11px 19px;border-radius:40px;font-weight:700;margin:10px auto 28px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:690px;margin:0 auto}
+.gift{position:relative;cursor:pointer;min-height:240px;border:1px solid #efd4dc;border-radius:26px;background:linear-gradient(150deg,#fff,#ffeef4);box-shadow:0 12px 35px #8d486022;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px 10px;transition:.25s;color:#77334e}
+.gift:hover,.gift:focus-visible{transform:translateY(-5px);box-shadow:0 15px 38px #8d48603d;outline:2px solid #e6a4b7;outline-offset:2px}
+.gift .emoji{font-size:clamp(4.3rem,11vw,7rem);filter:drop-shadow(0 7px 4px #73334822)}
+.gift b{font-size:1.25rem}.gift small{color:#995c6e}
+.gift:nth-child(2){background:linear-gradient(150deg,#fff,#f1e7ff)}
+.gift:nth-child(3){background:linear-gradient(150deg,#fff,#fff0d6)}
+.gift:nth-child(4){background:linear-gradient(150deg,#fff,#ffe0e9)}
+.footer{margin:32px auto 0;color:#986878;font-style:italic;line-height:1.8}
+.overlay{position:fixed;inset:0;background:#4a1e38a8;display:none;z-index:9;place-items:center;padding:15px;overflow:auto}
+.overlay.active{display:grid}
+.modal{background:linear-gradient(#fffaf9,#fff1f5);border-radius:24px;max-width:570px;width:100%;max-height:92vh;overflow:auto;box-shadow:0 20px 70px #26061666;position:relative;padding:27px 22px;text-align:center;animation:pop .4s ease both}
+.close{position:absolute;right:12px;top:12px;border:0;background:#f4dce3;padding:9px 12px;border-radius:50%;cursor:pointer;font-size:1.2rem}
+.present{font-size:4rem;display:block;animation:bounce 1.2s ease-in-out 2}
+.modal h2{font-family:Georgia,serif;font-size:2rem;color:#b12252;margin:8px}
+.wish{line-height:1.8;font-size:1rem}.sign{font-weight:700;color:#b12252}
+.voucher{margin-top:20px;background:white;border:1px solid #eccbd5;padding:18px 14px;border-radius:17px}
+.amount{font-size:2rem;font-weight:800;color:#c11750}
+.muted{font-size:.84rem;color:#7f6070}
+.warning{padding:8px 12px;background:#fff5db;border-radius:9px;font-size:.82rem;line-height:1.5}
+@keyframes pop{from{opacity:0;transform:scale(.8) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes bounce{0%,100%{transform:rotate(0)}30%{transform:rotate(-11deg)}70%{transform:rotate(8deg)}}
+@media(max-width:500px){.grid{gap:12px}.gift{min-height:195px}.gift b{font-size:1rem}.modal{padding:26px 14px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<div class="eyebrow">BỘ PHẬN INNOVATION P • 20/10</div>
+<h1>🎀 Món quà nhỏ<br>gửi bạn 🎀</h1>
+<p>Nhân Ngày Phụ nữ Việt Nam 20/10, Bộ phận <b>Innovation P</b> gửi tới bốn bạn nữ những món quà nhỏ thay lời cảm ơn và trân trọng.</p>
+<div class="instructions">💝 Hãy chọn đúng hộp quà mang tên bạn để mở nhé!</div>
+</section>
+<section class="grid" id="gifts" aria-label="Bốn hộp quà"></section>
+<p class="footer">Chúc các bạn luôn xinh đẹp, vui vẻ và hạnh phúc!<br>— Bộ phận Innovation P —</p>
+</main>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="recipient" aria-hidden="true">
+<div class="modal">
+<button class="close" id="close" type="button" aria-label="Đóng hộp quà">×</button>
+<span class="present" aria-hidden="true">🎁</span>
+<h2 id="recipient"></h2>
+<p class="wish" id="wish"></p>
+<div class="sign">Trân trọng — Bộ phận Innovation P 🌷</div>
+<div class="voucher">
+<div style="font-weight:750">🎫 QUÀ TẶNG WINMART+</div>
+<div class="amount">200.000đ</div>
+<p class="muted">Mã voucher và mã vạch sẽ được Bộ phận Innovation P gửi riêng qua Zalo cho bạn.</p>
+</div>
+<p class="warning">💝 Chúc bạn có một ngày 20/10 thật ý nghĩa!</p>
+</div>
+</div>
+<script>
+"use strict";
+const recipients=[{name:"Thương",icon:"🎁"},{name:"Duyên",icon:"🎀"},{name:"Quỳnh",icon:"🎁"},{name:"Huyền",icon:"🎀"}];
+const grid=document.getElementById("gifts");
+const overlay=document.getElementById("overlay");
+const closeButton=document.getElementById("close");
+let lastTrigger=null;
+recipients.forEach((recipient,index)=>{
+  const button=document.createElement("button");
+  button.className="gift";
+  button.type="button";
+  const emoji=document.createElement("span");
+  emoji.className="emoji";
+  emoji.setAttribute("aria-hidden","true");
+  emoji.textContent=recipient.icon;
+  const name=document.createElement("b");
+  name.textContent="Ms "+recipient.name;
+  const hint=document.createElement("small");
+  hint.textContent="Chạm để mở quà ✨";
+  button.append(emoji,name,hint);
+  button.addEventListener("click",()=>openGift(index,button));
+  grid.appendChild(button);
+});
+function openGift(index,trigger){
+  const recipient=recipients[index];
+  lastTrigger=trigger;
+  document.getElementById("recipient").textContent="Gửi Ms "+recipient.name+" 🌸";
+  document.getElementById("wish").textContent="Nhân dịp 20/10, Bộ phận Innovation P chúc Ms "+recipient.name+" luôn xinh đẹp, vui vẻ, hạnh phúc và gặp nhiều may mắn trong công việc cũng như cuộc sống. Xin gửi tặng một voucher WinMart+ 200.000đ như một món quà nhỏ thay lời cảm ơn!";
+  overlay.classList.add("active");
+  overlay.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  closeButton.focus();
+}
+function closeGift(){
+  overlay.classList.remove("active");
+  overlay.setAttribute("aria-hidden","true");
+  document.body.style.overflow="";
+  if(lastTrigger)lastTrigger.focus();
+}
+closeButton.addEventListener("click",closeGift);
+overlay.addEventListener("click",event=>{if(event.target===overlay)closeGift();});
+document.addEventListener("keydown",event=>{if(event.key==="Escape" && overlay.classList.contains("active"))closeGift();});
+</script>
+</body>
+</html>
