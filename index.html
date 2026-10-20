@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#230f29">
+<meta name="theme-color" content="#fff8f2">
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="Mở hộp quà 20/10 từ Bộ phận Innovation P dành cho bốn thành viên nữ.">
 <title>Món quà 20/10 | Innovation P</title>
@@ -82,6 +82,90 @@ h1 em{color:#ff9bbf;font-style:normal}
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gift{min-height:260px}}
 @media(max-width:420px){.page{padding:20px 12px 32px}.brand{font-size:10px}.kicker{margin:16px 0 8px}.grid{gap:10px}.gift{min-height:229px;border-radius:19px}.gift .glint{top:10px;right:12px}.gift strong{font-size:1.2rem}.gift-art{transform:scale(.86);margin:-6px 0}.modal{padding:17px 12px 16px;max-height:96dvh;border-radius:20px}.modal h2{font-size:1.65rem;margin:6px 0}.modal .star{font-size:27px}.wish{font-size:13px;line-height:1.55}.voucher{margin-top:10px;padding:10px}.amount{font-size:2rem;margin:3px}.real img{max-height:220px}.secondary{font-size:11px}.intro{font-size:14px;margin:11px auto 15px}.pill{font-size:12px;padding:10px 12px;margin-bottom:17px}.footer{font-size:12px;margin:20px auto 0}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* Innovation P • pastel edition • 20/10/2026 V4 */
+:root{--cream:#fff9f3;--rose:#d56888;--gold:#b8874b;--ink:#663c4b}
+html{scroll-behavior:smooth}
+body{color:#764c60;background:radial-gradient(ellipse 60% 50% at 0% 3%,#ffe1e5 0,transparent 80%),radial-gradient(ellipse 54% 60% at 100% 92%,#ffe9cc 0,transparent 85%),linear-gradient(135deg,#fffaf5,#fff1ef 58%,#fff9eb)}
+body:before{opacity:.32;background-image:radial-gradient(circle at 18% 24%,#e59cad 0 1.5px,transparent 2px),radial-gradient(circle at 78% 57%,#e8bd95 0 1.5px,transparent 2px);background-size:181px 151px,157px 187px}
+.page{max-width:1120px;padding:31px 22px 38px}
+.brand{border:1px solid #eed0d5;background:#fffcf8;border-radius:99px;color:#9d5870;box-shadow:0 7px 20px #d9919d22;font-size:11px}
+.kicker{color:#b58a5e;font-size:11px;letter-spacing:.24em;margin:23px 0 10px}
+h1{font-size:clamp(2.8rem,7vw,5.2rem);color:#934b62;text-shadow:none;letter-spacing:-.045em}
+h1 em{color:#d97f97}
+.intro{color:#926b77;max-width:680px;line-height:1.75;margin:15px auto 16px}
+.pill{background:#fffcfa;color:#ac5a78;border:1px solid #f0c6d4;padding:11px 20px;font-size:13px;margin-bottom:25px;box-shadow:0 6px 20px #d585a620}
+.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+.gift{--box:#e97c9b;--box-light:#ffc9d5;--box-dark:#c65377;--tint:#ffe7ed;--accent:#d97999;min-height:316px;padding:15px 8px 20px;gap:0;display:flex;flex-direction:column;justify-content:center;color:#92516d;border:1px solid #fff;border-radius:26px;background:linear-gradient(150deg,#fffdfb,var(--tint));box-shadow:0 16px 36px #ae72752b,inset 0 4px 9px #ffffffb9;backdrop-filter:none;transition:transform .25s,box-shadow .25s;-webkit-tap-highlight-color:transparent}
+.gift:after{background:linear-gradient(90deg,transparent,#ffffff94,transparent)}
+.gift:focus-visible{outline:3px solid #db7e9d}
+.gift:hover{transform:translateY(-6px);box-shadow:0 23px 45px #ac69723b}
+.gift:active{transform:scale(.975)}
+.gift[data-person="thuong"]{--box:#e97c9b;--box-light:#ffc9d5;--box-dark:#c65377;--tint:#ffe5ec;--accent:#d97999}
+.gift[data-person="duyen"]{--box:#c5a1dc;--box-light:#f3d8fa;--box-dark:#9674ba;--tint:#f3eafa;--accent:#9f7abd}
+.gift[data-person="quynh"]{--box:#e9ac74;--box-light:#ffe4bb;--box-dark:#cd854f;--tint:#fff1df;--accent:#d5a063}
+.gift[data-person="huyen"]{--box:#89c9b9;--box-light:#d6f6e9;--box-dark:#54a391;--tint:#e8f8f2;--accent:#60b3a5}
+.gift-art{display:block;width:min(100%,210px);height:165px;position:relative;margin:4px auto 12px;filter:none;flex-shrink:0}
+.gift-art svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 9px 6px #965f5829);animation:levitate 3.4s ease-in-out infinite}
+.gift[data-person="duyen"] svg{animation-delay:-.8s}
+.gift[data-person="quynh"] svg{animation-delay:-1.5s}
+.gift[data-person="huyen"] svg{animation-delay:-2.1s}
+.gift-art .box-lid{transform-origin:75px 68px}
+.gift-art .box-body{transform-origin:105px 155px}
+.gift.lifting .gift-art svg{animation:none}
+.gift.lifting .gift-art .box-lid{animation:lid-lift 1.08s cubic-bezier(.2,.75,.3,1) forwards}
+.gift.lifting .gift-art .box-body{animation:box-hop .9s ease forwards}
+.gift.lifting{pointer-events:none}
+.gift .spark{position:absolute;color:var(--accent);font-size:22px;z-index:1;animation:twinkle 2.4s infinite}
+.gift .spark.a{top:19px;right:20px}
+.gift .spark.b{top:47px;left:18px;font-size:15px;animation-delay:-1s}
+.gift .to{font-size:10px;color:#a17e89;letter-spacing:.18em;font-weight:850}
+.gift strong{color:#963e5e;font-size:1.55rem;margin-top:7px}
+.gift small{color:#aa7485;font-size:11px;margin:7px auto}
+.gift .tag{background:#ffffffc9;color:#a65373;border:1px solid #fff;padding:8px 12px;font-weight:750;font-size:10px}
+.footer{margin-top:27px;color:#a97b8b}
+.version{font-size:10px;color:#b3959e;margin-top:9px}
+@keyframes levitate{0%,100%{transform:translateY(4px)}50%{transform:translateY(-5px)}}
+@keyframes lid-lift{0%{transform:translate(0,0) rotate(0)}45%{transform:translate(0,-34px) rotate(-5deg)}100%{transform:translate(31px,-126px) rotate(27deg);opacity:0}}
+@keyframes box-hop{40%{transform:translateY(6px) scale(1.07)}100%{transform:translateY(0) scale(1)}}
+.modal{background:linear-gradient(155deg,#fffdf9,#fff2ee 70%,#ffedef);border:1px solid #fff;color:#744358}
+.modal h2{color:#af4569}
+.modal .eyebrow{color:#c29776}
+.wish{color:#805a68}
+.sign{color:#ad5a7b}
+.voucher{border-color:#ecc2ce}
+.amount{color:#c24370}
+.cta{background:linear-gradient(120deg,#df7092,#ae3f68)}
+.secondary{color:#896b76}
+@media (min-width:880px){.gift{min-height:331px}}
+@media (max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:600px;margin:0 auto;gap:13px}.gift{min-height:267px}.gift-art{height:150px}}
+@media (max-width:440px){
+.page{padding:17px 11px 23px}.brand{padding:7px 11px;font-size:10px}
+.kicker{font-size:9px;margin:16px 0 8px;letter-spacing:.2em}h1{font-size:2.78rem}
+.intro{font-size:13px;line-height:1.55;margin:11px auto 14px}
+.pill{font-size:11px;padding:9px 13px;margin-bottom:16px}
+.grid{gap:10px}
+.gift{min-height:226px;padding:7px 5px 12px;border-radius:19px}
+.gift-art{width:min(100%,165px);height:122px;margin:0 auto 1px}
+.gift .spark.a{right:12px;top:9px;font-size:18px}.gift .spark.b{left:10px;top:35px}
+.gift .to{font-size:9px}.gift strong{font-size:1.25rem;margin-top:6px}
+.gift small{font-size:10px;margin:5px auto}
+.gift .tag{font-size:9px;padding:6px 8px}
+.footer{font-size:11px;margin-top:15px}.version{font-size:9px}
+.overlay{padding:7px}
+.modal{padding:13px 10px;max-height:97dvh;border-radius:18px}
+.modal h2{font-size:1.55rem;margin:5px auto}
+.star{font-size:25px}.wish{font-size:12px;line-height:1.5}
+.sign{font-size:11px;margin:6px}
+.voucher{padding:8px;margin-top:8px;border-radius:12px}
+.voucher .label{font-size:11px}.amount{font-size:2rem;margin:2px}
+.term{font-size:10px;margin:3px auto 5px}
+.real img{max-height:190px}
+.cta{padding:11px 13px;font-size:13px;margin-top:7px}
+.secondary{font-size:10px;line-height:1.4;margin-top:6px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -89,10 +173,10 @@ h1 em{color:#ff9bbf;font-style:normal}
   <div class="brand"><span class="flower">🌷</span> BỘ PHẬN INNOVATION P</div>
   <p class="kicker">HAPPY VIETNAMESE WOMEN'S DAY</p>
   <h1>Món quà nhỏ<br><em>gửi bạn</em> ✨</h1>
-  <p class="intro">Ngày 20/10, Innovation P gửi lời cảm ơn và yêu thương đến bốn thành viên nữ đáng quý. Mỗi hộp quà là một lời chúc và voucher dành riêng cho bạn!</p>
-  <div class="pill">🎀 Chọn hộp quà mang tên mình để mở nhé!</div>
+  <p class="intro">Nhân ngày 20/10, Innovation P gửi lời cảm ơn và món quà nhỏ đến bốn thành viên nữ tuyệt vời. Hãy cùng mở hộp quà mang tên mình nhé!</p>
+  <div class="pill">🎀 Chạm vào hộp quà mang tên bạn</div>
   <section class="grid" id="gifts" aria-label="Bốn hộp quà 20 tháng 10"></section>
-  <p class="footer">Chúc các bạn luôn rạng rỡ, hạnh phúc và thành công.<br>Thân mến, Bộ phận Innovation P 💗</p>
+  <p class="footer">Chúc các bạn luôn rạng rỡ, hạnh phúc và thành công!<br>Thân mến, Bộ phận Innovation P 💗</p><p class="version">Giao diện mới · 20/10/2026 · V4</p>
 </main>
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="recipient" aria-hidden="true">
   <article class="modal">
@@ -130,7 +214,7 @@ const overlay=$("overlay"),grid=$("gifts");
 let active=null,lastTrigger=null,activeImage=null;
 names.forEach(person=>{
  const b=document.createElement("button");b.type="button";b.className="gift";b.dataset.person=person.id;
- b.innerHTML='<span class="glint" aria-hidden="true">✦</span><span class="gift-art" aria-hidden="true"><span class="gift-base"></span><span class="gift-lid"></span><span class="bow"></span></span><span class="to">DÀNH TẶNG</span><strong>Ms '+person.name+'</strong><small>Chạm để mở hộp quà</small><span class="tag">💝 Món quà bất ngờ</span>';
+ b.innerHTML="<span class=\"spark a\" aria-hidden=\"true\">✦</span><span class=\"spark b\" aria-hidden=\"true\">✧</span><span class=\"gift-art\" aria-hidden=\"true\"><svg viewBox=\"0 0 220 195\">\n<ellipse cx=\"110\" cy=\"180\" rx=\"77\" ry=\"11\" fill=\"#a87575\" opacity=\".13\"/>\n<path d=\"M27 53l3-8 3 8 8 3-8 3-3 8-3-8-8-3z\" fill=\"#e7bd7e\"/>\n<path d=\"M183 28l2.5-6 2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5z\" fill=\"#efd39c\"/>\n<g class=\"box-body\">\n<path d=\"M48 94L70 79H182L160 94Z\" fill=\"var(--box-light)\"/>\n<rect x=\"48\" y=\"92\" width=\"112\" height=\"79\" rx=\"6\" fill=\"var(--box)\"/>\n<path d=\"M160 93L182 79V149Q182 156 176 160L160 171Z\" fill=\"var(--box-dark)\"/>\n<path d=\"M96 93H120V171H96Z\" fill=\"#ffebbd\"/>\n<path d=\"M48 118H160V133H48Z\" fill=\"#fff0c8\"/>\n<path d=\"M160 118L182 104V119L160 133Z\" fill=\"#ecd29c\"/>\n<path d=\"M71 79H96L121 94H97Z\" fill=\"#fff3d3\"/>\n<path d=\"M52 97V162\" stroke=\"#fff\" stroke-width=\"3\" opacity=\".22\"/>\n</g>\n<g class=\"box-lid\">\n<path d=\"M36 74L59 60H190L167 74Z\" fill=\"var(--box-light)\"/>\n<rect x=\"36\" y=\"74\" width=\"131\" height=\"25\" rx=\"4\" fill=\"var(--box)\"/>\n<path d=\"M167 74L190 60V85L167 99Z\" fill=\"var(--box-dark)\"/>\n<path d=\"M97 74H120V99H97Z\" fill=\"#ffe9b9\"/>\n<path d=\"M108 74L132 60H157L121 74Z\" fill=\"#fff0cc\"/>\n<path d=\"M105 63C93 57 81 42 89 36C97 29 111 47 112 60\" fill=\"#f7dca6\" stroke=\"#dfb37b\" stroke-width=\"2.5\"/>\n<path d=\"M114 61C121 43 136 30 144 39C152 52 130 68 117 67\" fill=\"#ffe9be\" stroke=\"#dfb37b\" stroke-width=\"2.5\"/>\n<path d=\"M111 65L95 83L106 80L113 73L122 85L130 83L119 64Z\" fill=\"#f2d09b\"/>\n<ellipse cx=\"113\" cy=\"64\" rx=\"8\" ry=\"7\" fill=\"#fff3d6\" stroke=\"#dfb37b\" stroke-width=\"2\"/>\n</g>\n</svg></span><span class=\"to\">DÀNH TẶNG</span><strong>Ms "+person.name+"</strong><small>Chạm để mở quà ✨</small><span class=\"tag\">💝 Món quà cho bạn</span>";
  b.addEventListener("click",()=>openGift(person,b));
  grid.append(b);
 });
