@@ -192,7 +192,7 @@ h1 em{color:#d97f97}
       <div class="term">Mở hộp quà và lưu ngay mã vạch về điện thoại</div>
       <div class="real" id="real" hidden>
         <img id="barcodeImg" alt="Mã vạch voucher WinMart+ của riêng bạn">
-        <a id="download" class="cta" style="text-decoration:none;display:block" download="voucher.png">⬇ Lưu mã vạch về máy</a>
+        <a id="download" class="cta" style="text-decoration:none;display:block" download="voucher.png">⬇ Lưu mã vạch gốc về máy</a>
         <p class="secondary">📱 <b>iPhone:</b> Nhấn giữ ảnh mã vạch → chọn “Lưu vào Ảnh”. <b>Android:</b> Nhấn nút lưu hoặc giữ ảnh để tải xuống.</p><p class="secondary">Xuất trình mã vạch khi thanh toán tại cửa hàng WinMart+. Không chia sẻ mã cho người khác.</p>
       </div>
     </div>
@@ -259,30 +259,30 @@ $("close").addEventListener("click",closeGift);
 overlay.addEventListener("click",e=>{if(e.target===overlay)closeGift();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&active)closeGift();});
 function renderVoucher(code,person){
- const c=document.createElement("canvas");c.width=840;c.height=480;
- const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,c.width,c.height);
- ctx.fillStyle="#a92056";ctx.font="bold 31px Arial";ctx.textAlign="center";
- ctx.fillText("VOUCHER WINMART+",420,65);
- ctx.font="bold 50px Arial";ctx.fillText("200.000đ",420,122);
- ctx.fillStyle="#161616";
+ // Saved image intentionally contains only the original voucher number's Code 128 bars and human-readable digits.
+ // Do not add greetings, decorative card elements, or the recipient name to this PNG.
+ const c=document.createElement("canvas");c.width=840;c.height=310;
+ const ctx=c.getContext("2d");
+ ctx.fillStyle="#ffffff";ctx.fillRect(0,0,c.width,c.height);
+ ctx.fillStyle="#111111";
  const pairs=code.match(/\d{2}/g).map(Number);
  const checksum=(105+pairs.reduce((sum,n,i)=>sum+n*(i+1),0))%103;
  const indexes=[105].concat(pairs,[checksum,106]);
  let x=150;
  for(const index of indexes){
-  const p=BAR_PATTERNS[index];
-  for(let i=0;i<p.length;i++){
-   const w=Number(p[i])*6;
-   if(i%2===0)ctx.fillRect(x,160,w,145);
-   x+=w;
+  const pattern=BAR_PATTERNS[index];
+  for(let i=0;i<pattern.length;i++){
+   const width=Number(pattern[i])*6;
+   if(i%2===0)ctx.fillRect(x,42,width,162);
+   x+=width;
   }
  }
- ctx.font="bold 38px 'Arial',sans-serif";ctx.fillStyle="#242424";ctx.fillText(code,420,365);
- ctx.strokeStyle="#ead4dc";ctx.beginPath();ctx.moveTo(65,392);ctx.lineTo(775,392);ctx.stroke();
- ctx.fillStyle="#65435b";ctx.font="19px Arial";
- ctx.fillText("Dành tặng Ms "+person.name+" · Innovation P",420,422);
- ctx.font="17px Arial";ctx.fillText("Mang voucher đến quầy WinMart+ để thanh toán",420,453);
+ ctx.font="bold 43px Arial,sans-serif";
+ ctx.textAlign="center";
+ ctx.textBaseline="middle";
+ ctx.fillText(code,420,252);
  return c.toDataURL("image/png");
+
 }
 </script>
 </body>
