@@ -80,7 +80,7 @@ h1 em{color:#ff9bbf;font-style:normal}
 .confetti{position:fixed;top:-15px;z-index:30;pointer-events:none;width:9px;height:18px;animation:fall 2.5s linear forwards}
 @keyframes fall{to{transform:translate3d(var(--dx),105vh,0) rotate(var(--rot));opacity:0}}
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gift{min-height:260px}}
-@media(max-width:420px){.page{padding:25px 12px 45px}.grid{gap:10px}.gift{min-height:244px}.gift strong{font-size:1.22rem}.modal{padding:23px 13px 17px}.intro{font-size:14px}}
+@media(max-width:420px){.page{padding:20px 12px 32px}.brand{font-size:10px}.kicker{margin:16px 0 8px}.grid{gap:10px}.gift{min-height:229px;border-radius:19px}.gift .glint{top:10px;right:12px}.gift strong{font-size:1.2rem}.gift-art{transform:scale(.86);margin:-6px 0}.modal{padding:17px 12px 16px;max-height:96dvh;border-radius:20px}.modal h2{font-size:1.65rem;margin:6px 0}.modal .star{font-size:27px}.wish{font-size:13px;line-height:1.55}.voucher{margin-top:10px;padding:10px}.amount{font-size:2rem;margin:3px}.real img{max-height:220px}.secondary{font-size:11px}.intro{font-size:14px;margin:11px auto 15px}.pill{font-size:12px;padding:10px 12px;margin-bottom:17px}.footer{font-size:12px;margin:20px auto 0}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -89,7 +89,7 @@ h1 em{color:#ff9bbf;font-style:normal}
   <div class="brand"><span class="flower">🌷</span> BỘ PHẬN INNOVATION P</div>
   <p class="kicker">HAPPY VIETNAMESE WOMEN'S DAY</p>
   <h1>Món quà nhỏ<br><em>gửi bạn</em> ✨</h1>
-  <p class="intro">Ngày 20/10, Innovation P gửi lời cảm ơn và yêu thương đến bốn thành viên nữ đáng quý. Mỗi hộp quà là một lời chúc đặc biệt dành riêng cho bạn!</p>
+  <p class="intro">Ngày 20/10, Innovation P gửi lời cảm ơn và yêu thương đến bốn thành viên nữ đáng quý. Mỗi hộp quà là một lời chúc và voucher dành riêng cho bạn!</p>
   <div class="pill">🎀 Chọn hộp quà mang tên mình để mở nhé!</div>
   <section class="grid" id="gifts" aria-label="Bốn hộp quà 20 tháng 10"></section>
   <p class="footer">Chúc các bạn luôn rạng rỡ, hạnh phúc và thành công.<br>Thân mến, Bộ phận Innovation P 💗</p>
@@ -105,39 +105,29 @@ h1 em{color:#ff9bbf;font-style:normal}
     <div class="voucher">
       <div class="label">🎫 VOUCHER WINMART+</div>
       <div class="amount">200.000đ</div>
-      <div class="term">Mã vạch dùng theo điều kiện của voucher WinMart+</div>
-      <div id="unlock" class="unlock">
-        <label for="key">🔐 Mã mở quà cá nhân</label>
-        <input id="key" type="text" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX" maxlength="18">
-        <button id="unlockButton" type="button" class="cta">🎁 Mở voucher của tôi</button>
-        <p class="hint">Mỗi người có một mã mở quà riêng do Innovation P trao trực tiếp hoặc gửi riêng qua Zalo.</p>
-        <p class="status" id="status" aria-live="polite"></p>
-      </div>
+      <div class="term">Mở hộp quà và lưu ngay mã vạch về điện thoại</div>
       <div class="real" id="real" hidden>
         <img id="barcodeImg" alt="Mã vạch voucher WinMart+ của riêng bạn">
         <a id="download" class="cta" style="text-decoration:none;display:block" download="voucher.png">⬇ Lưu mã vạch về máy</a>
-        <p class="secondary">iPhone: nếu không tải được, nhấn giữ ảnh và chọn <b>Lưu vào Ảnh</b>. Mang mã vạch này tới quầy khi thanh toán.</p>
-        <p class="secondary">Mã dùng một lần. Không chia sẻ ảnh hoặc mã mở quà cho người khác.</p>
+        <p class="secondary">📱 <b>iPhone:</b> Nhấn giữ ảnh mã vạch → chọn “Lưu vào Ảnh”. <b>Android:</b> Nhấn nút lưu hoặc giữ ảnh để tải xuống.</p><p class="secondary">Xuất trình mã vạch khi thanh toán tại cửa hàng WinMart+. Không chia sẻ mã cho người khác.</p>
       </div>
     </div>
   </article>
 </div>
 <script>
 "use strict";
-// Only AES-GCM encrypted voucher numbers appear in this public file.
-// Original images and plaintext payment codes are NOT publicly included.
-const protectedVouchers=[
- {id:"thuong",salt:"sGHAL4EnAVXOiG4BcMQJ3A==",iv:"j71VkZQK2FElmdw9",data:"U87JbeTHqE5h4VadgP9krEeywuhAul3ltkk="},
- {id:"duyen",salt:"Xt5OCyNwpua4yiYJ1NzlFw==",iv:"DwcBtGRKHApUqq6N",data:"j00uBvqf9rhI4Ccj8FldpZ758VmLwbX9pBw="},
- {id:"quynh",salt:"3f/0DRz24/ZYeyKSBItMpA==",iv:"zidEuaZgYJaN1Iv4",data:"ky30VxbTP0Yhn7qFtrRHuPu5+09Yir3NDw4="},
- {id:"huyen",salt:"yVfE8JyWu4KszHj9USKlHg==",iv:"sXmh44o9JakA5mvP",data:"UMPlNWBfmyFC/+62PKxGQr/lRVpDnU2fXa0="}
+// This public demonstration includes original-value gift barcodes. Anyone with access to the page can view them.
+const vouchers=[
+ {id:"thuong",code:"9939318976"},
+ {id:"duyen",code:"9731767170"},
+ {id:"quynh",code:"7900447721"},
+ {id:"huyen",code:"4075008837"}
 ];
 const names=[{id:"thuong",name:"Thương"},{id:"duyen",name:"Duyên"},{id:"quynh",name:"Quỳnh"},{id:"huyen",name:"Huyền"}];
 const BAR_PATTERNS="212222 222122 222221 121223 121322 131222 122213 122312 132212 221213 221312 231212 112232 122132 122231 113222 123122 123221 223211 221132 221231 213212 223112 312131 311222 321122 321221 312212 322112 322211 212123 212321 232121 111323 131123 131321 112313 132113 132311 211313 231113 231311 112133 112331 132131 113123 113321 133121 313121 211331 231131 213113 213311 213131 311123 311321 331121 312113 312311 332111 314111 221411 431111 111224 111422 121124 121421 141122 141221 112214 112412 122114 122411 142112 142211 241211 221114 413111 241112 134111 111242 121142 121241 114212 124112 124211 411212 421112 421211 212141 214121 412121 111143 111341 131141 114113 114311 411113 411311 113141 114131 311141 411131 211412 211214 211232 2331112".split(" ");
 const $=id=>document.getElementById(id);
 const overlay=$("overlay"),grid=$("gifts");
 let active=null,lastTrigger=null,activeImage=null;
-const URL_KEY=location.hash.match(/^#(thuong|duyen|quynh|huyen)=([A-Za-z0-9-]+)$/i);
 names.forEach(person=>{
  const b=document.createElement("button");b.type="button";b.className="gift";b.dataset.person=person.id;
  b.innerHTML='<span class="glint" aria-hidden="true">✦</span><span class="gift-art" aria-hidden="true"><span class="gift-base"></span><span class="gift-lid"></span><span class="bow"></span></span><span class="to">DÀNH TẶNG</span><strong>Ms '+person.name+'</strong><small>Chạm để mở hộp quà</small><span class="tag">💝 Món quà bất ngờ</span>';
@@ -147,7 +137,7 @@ names.forEach(person=>{
 function burst(){
  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
  const colors=["#ffd479","#e98fb9","#9cdaea","#ffffff","#dd9cff"];
- for(let i=0;i<72;i++){
+ for(let i=0;i<(window.matchMedia("(max-width:600px)").matches?38:72);i++){
   const f=document.createElement("span");f.className="confetti";f.style.left=(5+Math.random()*90)+"vw";
   f.style.background=colors[i%colors.length];f.style.borderRadius=i%3===0?"50%":"2px";
   f.style.setProperty("--dx",Math.round(Math.random()*260-130)+"px");
@@ -164,11 +154,14 @@ function openGift(person,trigger){
  setTimeout(()=>{
   $("recipient").textContent="Gửi Ms "+person.name+" 🌸";
   $("wish").textContent="Nhân ngày 20/10, Innovation P chúc Ms "+person.name+" luôn xinh đẹp, vui vẻ, mạnh khỏe và ngập tràn hạnh phúc. Cảm ơn bạn vì những đóng góp và năng lượng tích cực dành cho tập thể. Chúc bạn mỗi ngày đều rạng rỡ như hôm nay!";
-  $("status").textContent="";$("key").value="";$("real").hidden=true;$("unlock").hidden=false;
-  if(URL_KEY&&URL_KEY[1].toLowerCase()===person.id)$("key").value=URL_KEY[2];
+  const voucher=vouchers.find(x=>x.id===person.id);
+  const png=renderVoucher(voucher.code,person);
+  $("barcodeImg").src=png;
+  $("download").href=png;
+  $("download").download="Voucher_WinMart_Ms_"+person.id+".png";
+  $("real").hidden=false;
   overlay.classList.add("active");overlay.setAttribute("aria-hidden","false");document.body.classList.add("lock");
   $("close").focus();
-  if(URL_KEY&&URL_KEY[1].toLowerCase()===person.id)unlockVoucher();
  },wait);
 }
 function closeGift(){
@@ -181,19 +174,6 @@ function closeGift(){
 $("close").addEventListener("click",closeGift);
 overlay.addEventListener("click",e=>{if(e.target===overlay)closeGift();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&active)closeGift();});
-$("unlockButton").addEventListener("click",unlockVoucher);
-$("key").addEventListener("keydown",e=>{if(e.key==="Enter")unlockVoucher();});
-function base64Bytes(s){return Uint8Array.from(atob(s),x=>x.charCodeAt(0));}
-async function decryptCode(v,pass){
- const raw=pass.toUpperCase().replace(/[^A-Z0-9]/g,"");
- if(raw.length!==12)throw new Error("Nhập mã mở quà gồm 12 ký tự mà Innovation P đã trao.");
- const material=await crypto.subtle.importKey("raw",new TextEncoder().encode(raw),"PBKDF2",false,["deriveKey"]);
- const key=await crypto.subtle.deriveKey({name:"PBKDF2",salt:base64Bytes(v.salt),iterations:280000,hash:"SHA-256"},material,{name:"AES-GCM",length:256},false,["decrypt"]);
- const bytes=await crypto.subtle.decrypt({name:"AES-GCM",iv:base64Bytes(v.iv),additionalData:new TextEncoder().encode("InnovationP-2026-20-10:"+v.id)},key,base64Bytes(v.data));
- const code=new TextDecoder().decode(bytes);
- if(!/^\d{10}$/.test(code))throw new Error("Không đọc được dữ liệu voucher.");
- return code;
-}
 function renderVoucher(code,person){
  const c=document.createElement("canvas");c.width=840;c.height=480;
  const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,c.width,c.height);
@@ -217,27 +197,8 @@ function renderVoucher(code,person){
  ctx.strokeStyle="#ead4dc";ctx.beginPath();ctx.moveTo(65,392);ctx.lineTo(775,392);ctx.stroke();
  ctx.fillStyle="#65435b";ctx.font="19px Arial";
  ctx.fillText("Dành tặng Ms "+person.name+" · Innovation P",420,422);
- ctx.font="17px Arial";ctx.fillText("Giữ mã an toàn và kiểm tra điều kiện sử dụng tại cửa hàng",420,453);
+ ctx.font="17px Arial";ctx.fillText("Mang voucher đến quầy WinMart+ để thanh toán",420,453);
  return c.toDataURL("image/png");
-}
-async function unlockVoucher(){
- if(!active)return;
- const v=protectedVouchers.find(x=>x.id===active.id);
- const btn=$("unlockButton");btn.disabled=true;btn.textContent="Đang mở món quà...";
- $("status").textContent="";
- try{
-  const code=await decryptCode(v,$("key").value);
-  const url=renderVoucher(code,active);
-  $("barcodeImg").src=url;
-  $("download").href=url;
-  $("download").download="Voucher_WinMart_Ms_"+active.id+".png";
-  $("real").hidden=false;$("unlock").hidden=true;
-  $("key").value="";
-  if(URL_KEY)history.replaceState(null,"",location.pathname+location.search);
-  burst();
- }catch(err){
-  $("status").textContent=err.message&&err.message.includes("12 ký tự")?err.message:"Mã mở quà chưa đúng. Bạn hãy kiểm tra lại mã được trao riêng.";
- }finally{btn.disabled=false;btn.textContent="🎁 Mở voucher của tôi";}
 }
 </script>
 </body>
