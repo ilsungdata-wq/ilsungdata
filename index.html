@@ -176,7 +176,7 @@ h1 em{color:#d97f97}
   <p class="intro">Nhân ngày 20/10, Innovation P gửi lời cảm ơn và món quà nhỏ đến bốn thành viên nữ tuyệt vời. Hãy cùng mở hộp quà mang tên mình nhé!</p>
   <div class="pill">🎀 Chạm vào hộp quà mang tên bạn</div>
   <section class="grid" id="gifts" aria-label="Bốn hộp quà 20 tháng 10"></section>
-  <p class="footer">Chúc các bạn luôn rạng rỡ, hạnh phúc và thành công!<br>Thân mến, Bộ phận Innovation P 💗</p><p class="version">Giao diện mới · 20/10/2026 · V4</p>
+  <p class="footer">Chúc các bạn luôn rạng rỡ, hạnh phúc và thành công!<br>Thân mến, Bộ phận Innovation P 💗</p><p class="version">Giao diện tối ưu · 20/10/2026 · V5</p>
 </main>
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="recipient" aria-hidden="true">
   <article class="modal">
@@ -192,7 +192,7 @@ h1 em{color:#d97f97}
       <div class="term">Mở hộp quà và lưu ngay mã vạch về điện thoại</div>
       <div class="real" id="real" hidden>
         <img id="barcodeImg" alt="Mã vạch voucher WinMart+ của riêng bạn">
-        <a id="download" class="cta" style="text-decoration:none;display:block" download="voucher.png">⬇ Lưu mã vạch gốc về máy</a>
+        <a id="download" class="cta" style="text-decoration:none;display:block" download="voucher.png">⬇ Lưu mã vạch về điện thoại</a>
         <p class="secondary">📱 <b>iPhone:</b> Nhấn giữ ảnh mã vạch → chọn “Lưu vào Ảnh”. <b>Android:</b> Nhấn nút lưu hoặc giữ ảnh để tải xuống.</p><p class="secondary">Xuất trình mã vạch khi thanh toán tại cửa hàng WinMart+. Không chia sẻ mã cho người khác.</p>
       </div>
     </div>
@@ -211,7 +211,12 @@ const names=[{id:"thuong",name:"Thương"},{id:"duyen",name:"Duyên"},{id:"quynh
 const BAR_PATTERNS="212222 222122 222221 121223 121322 131222 122213 122312 132212 221213 221312 231212 112232 122132 122231 113222 123122 123221 223211 221132 221231 213212 223112 312131 311222 321122 321221 312212 322112 322211 212123 212321 232121 111323 131123 131321 112313 132113 132311 211313 231113 231311 112133 112331 132131 113123 113321 133121 313121 211331 231131 213113 213311 213131 311123 311321 331121 312113 312311 332111 314111 221411 431111 111224 111422 121124 121421 141122 141221 112214 112412 122114 122411 142112 142211 241211 221114 413111 241112 134111 111242 121142 121241 114212 124112 124211 411212 421112 421211 212141 214121 412121 111143 111341 131141 114113 114311 411113 411311 113141 114131 311141 411131 211412 211214 211232 2331112".split(" ");
 const $=id=>document.getElementById(id);
 const overlay=$("overlay"),grid=$("gifts");
+const barcodeCache=Object.create(null);
+
 let active=null,lastTrigger=null,activeImage=null;
+// Pre-render the tiny four barcode PNGs once so saving is immediate on mobile.
+function warmBarcodes(){for(const p of names){if(!barcodeCache[p.id]){const v=vouchers.find(v=>v.id===p.id);barcodeCache[p.id]=renderVoucher(v.code,p);}}}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",warmBarcodes,{once:true});else warmBarcodes();
 names.forEach(person=>{
  const b=document.createElement("button");b.type="button";b.className="gift";b.dataset.person=person.id;
  b.innerHTML="<span class=\"spark a\" aria-hidden=\"true\">✦</span><span class=\"spark b\" aria-hidden=\"true\">✧</span><span class=\"gift-art\" aria-hidden=\"true\"><svg viewBox=\"0 0 220 195\">\n<ellipse cx=\"110\" cy=\"180\" rx=\"77\" ry=\"11\" fill=\"#a87575\" opacity=\".13\"/>\n<path d=\"M27 53l3-8 3 8 8 3-8 3-3 8-3-8-8-3z\" fill=\"#e7bd7e\"/>\n<path d=\"M183 28l2.5-6 2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5z\" fill=\"#efd39c\"/>\n<g class=\"box-body\">\n<path d=\"M48 94L70 79H182L160 94Z\" fill=\"var(--box-light)\"/>\n<rect x=\"48\" y=\"92\" width=\"112\" height=\"79\" rx=\"6\" fill=\"var(--box)\"/>\n<path d=\"M160 93L182 79V149Q182 156 176 160L160 171Z\" fill=\"var(--box-dark)\"/>\n<path d=\"M96 93H120V171H96Z\" fill=\"#ffebbd\"/>\n<path d=\"M48 118H160V133H48Z\" fill=\"#fff0c8\"/>\n<path d=\"M160 118L182 104V119L160 133Z\" fill=\"#ecd29c\"/>\n<path d=\"M71 79H96L121 94H97Z\" fill=\"#fff3d3\"/>\n<path d=\"M52 97V162\" stroke=\"#fff\" stroke-width=\"3\" opacity=\".22\"/>\n</g>\n<g class=\"box-lid\">\n<path d=\"M36 74L59 60H190L167 74Z\" fill=\"var(--box-light)\"/>\n<rect x=\"36\" y=\"74\" width=\"131\" height=\"25\" rx=\"4\" fill=\"var(--box)\"/>\n<path d=\"M167 74L190 60V85L167 99Z\" fill=\"var(--box-dark)\"/>\n<path d=\"M97 74H120V99H97Z\" fill=\"#ffe9b9\"/>\n<path d=\"M108 74L132 60H157L121 74Z\" fill=\"#fff0cc\"/>\n<path d=\"M105 63C93 57 81 42 89 36C97 29 111 47 112 60\" fill=\"#f7dca6\" stroke=\"#dfb37b\" stroke-width=\"2.5\"/>\n<path d=\"M114 61C121 43 136 30 144 39C152 52 130 68 117 67\" fill=\"#ffe9be\" stroke=\"#dfb37b\" stroke-width=\"2.5\"/>\n<path d=\"M111 65L95 83L106 80L113 73L122 85L130 83L119 64Z\" fill=\"#f2d09b\"/>\n<ellipse cx=\"113\" cy=\"64\" rx=\"8\" ry=\"7\" fill=\"#fff3d6\" stroke=\"#dfb37b\" stroke-width=\"2\"/>\n</g>\n</svg></span><span class=\"to\">DÀNH TẶNG</span><strong>Ms "+person.name+"</strong><small>Chạm để mở quà ✨</small><span class=\"tag\">💝 Món quà cho bạn</span>";
@@ -234,12 +239,12 @@ function openGift(person,trigger){
  if(active)return;
  active=person;lastTrigger=trigger;
  trigger.classList.add("lifting");burst();
- const wait=window.matchMedia("(prefers-reduced-motion: reduce)").matches?50:850;
+ const wait=window.matchMedia("(prefers-reduced-motion: reduce)").matches?50:550;
  setTimeout(()=>{
   $("recipient").textContent="Gửi Ms "+person.name+" 🌸";
   $("wish").textContent="Nhân ngày 20/10, Innovation P chúc Ms "+person.name+" luôn xinh đẹp, vui vẻ, mạnh khỏe và ngập tràn hạnh phúc. Cảm ơn bạn vì những đóng góp và năng lượng tích cực dành cho tập thể. Chúc bạn mỗi ngày đều rạng rỡ như hôm nay!";
   const voucher=vouchers.find(x=>x.id===person.id);
-  const png=renderVoucher(voucher.code,person);
+  const png=barcodeCache[person.id]||renderVoucher(voucher.code,person);
   $("barcodeImg").src=png;
   $("download").href=png;
   $("download").download="Voucher_WinMart_Ms_"+person.id+".png";
